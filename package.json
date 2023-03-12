@@ -1,0 +1,33 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "lint": "eslint . --ext .ts,.vue"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^0.38.5",
+    "@nuxt/image-edge": "1.0.0-28020728.5df24eb",
+    "@nuxt/types": "^2.16.3",
+    "@nuxtjs/tailwindcss": "^6.6.6",
+    "autoprefixer": "^10.4.14",
+    "eslint": "^8.38.0",
+    "graphql": "^16.6.0",
+    "nuxt": "^3.4.2",
+    "postcss": "^8.4.23",
+    "tailwindcss": "^3.3.1",
+    "typescript": "^5.0.4"
+  },
+  "dependencies": {
+    "@nuxtjs/eslint-config-typescript": "^12.0.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "graphql-request": "^6.0.0",
+    "prettier": "^2.8.7",
+    "sass": "^1.62.0",
+    "vue-google-maps-community-fork": "^0.3.1"
+  }
+}
