@@ -15,6 +15,13 @@ interface Homepage {
     }
     intro: {
       html: HTMLElement
+      raw: {
+        children: {
+          children: {
+            text: string
+          }[]
+        }[]
+      }
     }
     heroBackgroundImage: {
       url: string
@@ -41,59 +48,68 @@ interface Homepage {
 const { $hygraph } = useNuxtApp()
 
 const { data: homepage } = useAsyncData<Homepage>('homepage', () =>
-  $hygraph.request(
-    gql`
-      query Homepage {
-        hero(where: { id: "clhk8v6kwf3mz0aw6uwjn96lb" }) {
-          logo {
-            url
-            height
-            width
-          }
-          intro {
-            html
-          }
-          heroBackgroundImage {
-            url
-          }
+  $hygraph.request(gql`
+    query Homepage {
+      hero(where: { id: "clhk8v6kwf3mz0aw6uwjn96lb" }) {
+        logo {
+          url
+          height
+          width
         }
-        events(orderBy: date_DESC, last: 8) {
-          title
-          image {
-            height
-            width
-            url
-          }
-          date
-          id
+        intro {
+          html
+          raw
         }
-        menu(where: { id: "clhk9g859f5pf0aw6ma95lxw2" }) {
-          title
-          menu {
-            url
-            size
-            fileName
-          }
-          description {
-            html
-          }
-          menuBackgroundImage {
-            url
-          }
-        }
-        timetable(where: { id: "clhk8vs7af33r0aw0hkmcigcf" }) {
-          title
-          image {
-            url
-          }
-          description {
-            html
-          }
+        heroBackgroundImage {
+          url
         }
       }
-    `
-  )
+      events(orderBy: date_DESC, last: 8) {
+        title
+        image {
+          height
+          width
+          url
+        }
+        date
+        id
+      }
+      menu(where: { id: "clhk9g859f5pf0aw6ma95lxw2" }) {
+        title
+        menu {
+          url
+          size
+          fileName
+        }
+        description {
+          html
+        }
+        menuBackgroundImage {
+          url
+        }
+      }
+      timetable(where: { id: "clhk8vs7af33r0aw0hkmcigcf" }) {
+        title
+        image {
+          url
+        }
+        description {
+          html
+        }
+      }
+    }
+  `)
 )
+
+const description =
+  homepage.value?.hero.intro.raw.children[2]?.children[0]?.text
+
+useSeoMeta({
+  description,
+  ogDescription: description,
+  ogImage: homepage.value?.hero.logo.url,
+  twitterCard: 'summary_large_image'
+})
 
 const columns = Math.min(Math.max(homepage.value?.events.length || 1, 1), 4)
 </script>
@@ -150,10 +166,6 @@ const columns = Math.min(Math.max(homepage.value?.events.length || 1, 1), 4)
         class="max-w-lg text-center mx-auto py-36 flex flex-col items-center"
       >
         <h2 class="text-3xl">{{ homepage?.menu.title }}</h2>
-        <!-- <div
-          v-if="homepage?.menu.description"
-          v-html="homepage?.menu.description.html"
-        /> -->
         <a
           :href="homepage?.menu.menu.url"
           target="_blank"

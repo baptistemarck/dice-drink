@@ -2,8 +2,8 @@
 export default defineNuxtConfig({
   app: {
     head: {
+      title: 'Dice & Drink',
       meta: [
-        // <meta name="viewport" content="width=device-width, initial-scale=1">
         { name: 'viewport', content: 'width=device-width, initial-scale=1' }
       ],
       script: [],
@@ -17,12 +17,7 @@ export default defineNuxtConfig({
     }
   },
   build: {
-    transpile: ['vue-google-maps-community-fork', '@googlemaps/markercluster']
-  },
-  vite: {
-    optimizeDeps: {
-      include: ['vue-google-maps-community-fork', 'fast-deep-equal']
-    }
+    transpile: ['@fawmi/vue-google-maps', '@googlemaps/markercluster']
   },
   runtimeConfig: {
     // Config within public will be also exposed to the client

@@ -5,8 +5,10 @@
         <Logo />
       </NuxtLink>
       <div class="flex flex-col md:flex-row justify-center gap-2 py-3 md:py-5">
-        <p>hello@diceanddrink.fr</p>
-        <p>phone</p>
+        <p>
+          <ObfuscatedEmail />
+        </p>
+        <p><a href="tel:+33557884284">+33 (0) 5 57 88 42 84</a></p>
         <p>220 Cours du Maréchal Gallieni, 33400 – Talence</p>
         <p>©{{ new Date().getFullYear() }}</p>
       </div>

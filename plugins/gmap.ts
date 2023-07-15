@@ -1,5 +1,5 @@
 import { defineNuxtPlugin } from 'nuxt/app'
-import VueGoogleMaps from 'vue-google-maps-community-fork'
+import VueGoogleMaps from '@fawmi/vue-google-maps'
 
 declare global {
   namespace NodeJS {

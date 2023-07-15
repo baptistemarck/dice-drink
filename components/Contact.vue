@@ -1,11 +1,11 @@
 <script setup lang="ts">
 const { center, markers } = {
-  center: { lat: 44.82558699915055, lng: -0.5892679602871478 },
+  center: { lat: 44.819665687023154, lng: -0.5978853182532341 },
   markers: [
     {
       position: {
-        lat: 44.82558699915055,
-        lng: -0.5892679602871478
+        lat: 44.819665687023154,
+        lng: -0.5978853182532341
       }
     } // Along list of clusters
   ]
